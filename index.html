@@ -7,26 +7,31 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
           <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <h1 class="display-4">Weather Dashboard</h1>    
+    <body> 
         <div class="container">
             <div class="row">
-                <aside  class="left-side" id="left-column">
-                    <h4>Enter the name of city.</h4>
-                    <div class="input-group">                  
-                        <input type="text" class="form-control" placeholder="" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text" id="btnGroupAddon2">@</div>
-                        </div>
-                    </div>
-                </aside>
+                <div class="col-12">
+                <h1 class="display-4">Weather Dashboard</h1> 
+                </div>
             </div>
             <div class="row">
                 <div class="col-4">
-                        1 of 3
+                    <aside  class="left-side" id="left-column">
+                        <h4>Enter the name of city.</h4>
+                            <div class="input-group">                  
+                                <input type="text" class="form-control" placeholder="" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text" id="btnGroupAddon2">@</div>
+                                </div>
+                            </div>
+                    </aside>
                 </div>
                 <div class="col-8">
-                        2 of 3 (wider)
+                    this is where the result will show
+                    <div class="row">
+                        <div class="col-12">this is main area with map</div>
+                        <div class="col-12">this is where 5 day forecast will go</div>
+                    </div>
                 </div>
             </div>
         </div>
