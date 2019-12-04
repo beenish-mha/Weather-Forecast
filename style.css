@@ -1,0 +1,10 @@
+
+h1 {
+    color: blueviolet;
+    background-color: rgb(42, 12, 97);
+    color: white;
+}
+.left-side {
+    margin: 20px;
+    background-color: cyan;
+}
