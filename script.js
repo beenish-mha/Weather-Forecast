@@ -3,12 +3,20 @@ var $currentTemp = $("#current-temp");
 var $currentCity = $("#current-city");
 var $forecastDiv = $("#forecast-div");
 var queryUrl;
+var $city;
+var i=0
+
+// making cities list
+function cityList(){
+     localStorage.setItem("city"+i, $city);  
+     i++
+}
 
 //getting city name on click event
 $(".btn").on("click", function(){ 
     var $cityName = $("#city-name").val();
     $("#city-name").val("");
-    console.log($cityName)
+    //console.log($cityName)
     queryUrl = "http://api.weatherapi.com/v1/forecast.json?key=28b5b18116344d0ba6e131451190812&days=6&q="+$cityName;
 results();
 });
@@ -24,6 +32,8 @@ $.ajax ({
   $("#current-temp").empty();
   $("#forecast-div").empty();
   // getting the city and country name
+  $city=response.location.name;
+ 
   $currentTemp.append($("<h3>").text(response.location.name + " "+ response.location.country + " ("+response.location.localtime+")"));
  // $currentTemp.append($("<img>").attr("src",  response.current.condition.icon));
 
@@ -42,8 +52,9 @@ $.ajax ({
       $forecastDiv.append($forcastColumn);
   }
    
-
+  cityList()
 });
+
 }
 // .attr("class", "card-title")
 // .attr("class", "card-text")
