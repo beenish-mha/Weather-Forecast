@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Weather Forcast</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" href="style.css">
-    </head>
-    <body> 
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                <h1 class="display-4">Weather Dashboard</h1> 
-                </div>
+
+<head>
+    <title>Weather Forcast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-4">Weather Dashboard</h1>
             </div>
-            <div class="row">
-                <div class="col-4">
-                    <aside  class="left-side" id="left-column">
-                        <h4>Enter the name of city.</h4>
-                        <div class="form-inline form-group">
-                        <textarea class="city-name"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <aside class="left-side" id="left-column">
+                    <h4>Enter City Name.</h4>
+                    <div class="form-inline form-group" >
+                        <textarea id="city-name" type="text"></textarea>
                         <button class="btn"><i class="fa fa-search"></i></button>
-                        </div>   
-                    </aside>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-8" id="current-city">
+                <div class="row">
+                    <div class="col-12" id="current-temp"></div>
                 </div>
-                <div class="col-8" id="current-city">
-                    <div class="row">
-                        <div class="col-12" id="current-temp"></div>
-                        
-                    </div>
-                    <div class="row" id="forecast-div">
-                        </div>
-                    </div>
+                <div class="row" id="forecast-div">
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="script.js"></script>
-    </body>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
 </html>
