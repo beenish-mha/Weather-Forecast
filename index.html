@@ -3,8 +3,8 @@
     <head>
         <title>Weather Forcast</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
           <link rel="stylesheet" href="style.css">
     </head>
     <body> 
@@ -18,12 +18,10 @@
                 <div class="col-4">
                     <aside  class="left-side" id="left-column">
                         <h4>Enter the name of city.</h4>
-                            <div class="input-group">                  
-                                <input type="text" class="form-control" placeholder="" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text" id="btnGroupAddon2">@</div>
-                                </div>
-                            </div>
+                        <div class="form-inline form-group">
+                        <textarea class="city-name"></textarea>
+                        <button class="btn"><i class="fa fa-search"></i></button>
+                        </div>   
                     </aside>
                 </div>
                 <div class="col-8">
@@ -35,5 +33,7 @@
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="script.js"></script>
     </body>
 </html>
