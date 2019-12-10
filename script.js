@@ -8,9 +8,11 @@ var $cityListArray = [];
 var storeCities=JSON.parse(localStorage.getItem("city"))
 
 //making list of already searched cities
+if  (localStorage.getItem("infiniteScrollEnabled") !== null)  {
 for (var j = 0; j<storeCities.length; j++){
     console.log (storeCities[j])
-    $("#city-list").append($("<h5>").text(storeCities[j]));
+   $("#city-list").append($("<h5>").text(storeCities[j]));
+}
 }
 
 // making cities list and store in local storage 
@@ -44,7 +46,7 @@ $.ajax ({
   // getting the city and country name
   $city=response.location.name;
  
-  $currentTemp.append($("<h3>").text(response.location.name + " "+ response.location.country + " ("+response.location.localtime+")"));
+  $currentTemp.append($("<h3>").text(response.location.name + " "+ response.location.country + " ("+response.forecast.forecastday[0].date+")"));
  // $currentTemp.append($("<img>").attr("src",  response.current.condition.icon));
 
   //setting <h5> html tag and assigning response parameters
