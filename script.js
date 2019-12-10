@@ -4,14 +4,24 @@ var $currentCity = $("#current-city");
 var $forecastDiv = $("#forecast-div");
 var queryUrl;
 var $city;
-var i=0
+var $cityListArray = [];
+var storeCities=JSON.parse(localStorage.getItem("city"))
 
-// making cities list
-function cityList(){
-     localStorage.setItem("city"+i, $city);  
-     i++
+//making list of already searched cities
+for (var j = 0; j<storeCities.length; j++){
+    console.log (storeCities[j])
+    $("#city-list").append($("<h5>").text(storeCities[j]));
 }
 
+// making cities list and store in local storage 
+//and displaying on the left side of the page
+function cityList(){
+    
+    $cityListArray.push($city);
+     window.localStorage.setItem("city", JSON.stringify($cityListArray));
+     $("#city-list").append($("<h5>").text($city));
+     
+}
 //getting city name on click event
 $(".btn").on("click", function(){ 
     var $cityName = $("#city-name").val();
@@ -47,7 +57,7 @@ $.ajax ({
   for (var i=0; i<response.forecast.forecastday.length; i++){
     var $forcastColumn = $("<div>").attr("class", "col-2");
       $(".col-2").append($("<h5>").text(response.forecast.forecastday[i].date)); 
-      $(".col-2").append($("<p>").text("Current Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C"));  
+      $(".col-2").append($("<p>").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C"));  
       $(".col-2").append($("<p>").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%"));  
       $forecastDiv.append($forcastColumn);
   }
