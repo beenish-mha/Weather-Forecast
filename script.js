@@ -1,28 +1,26 @@
 //assigning weatherapi
 var $currentTemp = $("#current-temp");
 var $currentCity = $("#current-city");
-var $forecastDiv = $("#forecast-div");
+//var $forecastDiv = $(".row-cols-md-2");
 var queryUrl;
 var $city;
-var $cityListArray = [];
-var storeCities=JSON.parse(localStorage.getItem("city"))
+var $cityListArray = JSON.parse(localStorage.getItem("city")) || [];
+//var storeCities=JSON.parse(localStorage.getItem("city"))
+//console.log(storeCities)
 
 //making list of already searched cities
-if  (localStorage.getItem("infiniteScrollEnabled") !== null)  {
-for (var j = 0; j<storeCities.length; j++){
-    console.log (storeCities[j])
-   $("#city-list").append($("<h5>").text(storeCities[j]));
+if  ($cityListArray !== [])  {
+for (var j = 0; j<$cityListArray.length; j++){
+   $("#city-list").append($("<h5>").text($cityListArray[j]));
 }
 }
 
 // making cities list and store in local storage 
 //and displaying on the left side of the page
 function cityList(){
-    
     $cityListArray.push($city);
      window.localStorage.setItem("city", JSON.stringify($cityListArray));
-     $("#city-list").append($("<h5>").text($city));
-     
+     $("#city-list").append($("<h5>").text($city));    
 }
 //getting city name on click event
 $(".btn").on("click", function(){ 
@@ -54,14 +52,16 @@ $.ajax ({
   $currentTemp.append($("<h5>").text("Humidity: " + response.current.humidity + "%"));
   $currentTemp.append($("<h5>").text("Wind Speed: " + response.current.wind_mph + "MPH"));
   $currentTemp.append($("<h5>").text("UV Index: " + response.current.uv));
- 
-  //setting forcast for 5 days
+
+  //setting forcast for 5 days 
   for (var i=0; i<response.forecast.forecastday.length; i++){
-    var $forcastColumn = $("<div>").attr("class", "col-2");
-      $(".col-2").append($("<h5>").text(response.forecast.forecastday[i].date)); 
-      $(".col-2").append($("<p>").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C"));  
-      $(".col-2").append($("<p>").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%"));  
-      $forecastDiv.append($forcastColumn);
+
+    $(".row-cols-md-2").append("<div").attr("class", "mb-4")
+    $(".mb-4").append($("<div>").attr("class", "card")); 
+    $(".card").append($("<div>").attr("class", "card-body"));
+      $(".card-body").append($("<h5>").attr("class","card-title").text(response.forecast.forecastday[i].date)); 
+      $(".card-body").append($("<p>").attr("class","card-text").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C"));  
+      $(".card-body").append($("<p>").attr("class","card-text").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%"));  
   }
    
   cityList()
