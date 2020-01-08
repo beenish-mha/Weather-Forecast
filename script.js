@@ -50,7 +50,7 @@ $.ajax ({
   // $currentTemp.append($("<img>").attr("src",  response.current.condition.icon));
 
   //setting <h5> html tag and assigning response parameters
-  $currentTemp.append($("<h5>").text("Current Temperature: " + response.current.temp_c + "C"));
+  $currentTemp.append($("<h5>").text("Current Temperature: " + response.current.temp_c + "C\xB0" ));
   $currentTemp.append($("<h5>").text("Humidity: " + response.current.humidity + "%"));
   $currentTemp.append($("<h5>").text("Wind Speed: " + response.current.wind_mph + "MPH"));
   $currentTemp.append($("<h5>").text("UV Index: " + response.current.uv));
@@ -65,7 +65,7 @@ $.ajax ({
     $card = $("<div>").attr("class", "card")
     $cardBody = $("<div>").attr("class", "card-body")
     $heading5 = $("<h5>").attr("class","card-title").text(response.forecast.forecastday[i].date)
-    $temp = $("<p>").attr("class","card-text").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C")
+    $temp = $("<p>").attr("class","card-text").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C\xB0")
     $humid = $("<p>").attr("class","card-text").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%")
     $cardBody.append($heading5); 
     $cardBody.append($temp);  
@@ -74,17 +74,6 @@ $.ajax ({
     $cardDiv.append($card) 
     }
 
-
-  // $(".card-group").append("<div>").attr("class", "card")
-  // $(".mb-4").append($("<div>").attr("class", "card"));
-  // var $card = $(".card")
-  // for (var i=1; i<response.forecast.forecastday.length; i++){ 
-  //  // $card.append($("<div>").attr("class", "card-body"));   
-  //     $card.append($("<h5>").attr("class","card-title").text(response.forecast.forecastday[i].date)); 
-  //     $card.append($("<p>").attr("class","card-text").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C"));  
-  //     $card.append($("<p>").attr("class","card-text").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%"));  
-  // }
-   
   cityList()
 });
 
