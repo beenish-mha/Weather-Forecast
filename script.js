@@ -1,7 +1,7 @@
 //assigning weatherapi
 var $currentTemp = $("#current-temp");
 var $currentCity = $("#current-city");
-//var $forecastDiv = $(".row-cols-md-2");
+var $cardDiv = $(".card-group")
 var queryUrl;
 var $city;
 var $cityListArray = JSON.parse(localStorage.getItem("city")) || [];
@@ -18,7 +18,7 @@ for (var j = 0; j<$cityListArray.length; j++){
 // making cities list and store in local storage 
 //and displaying on the left side of the page
 function cityList(){
-    $cityListArray.push($city);
+     $cityListArray.push($city);
      window.localStorage.setItem("city", JSON.stringify($cityListArray));
      $("#city-list").append($("<h5>").text($city));    
 }
@@ -56,18 +56,36 @@ $.ajax ({
   $currentTemp.append($("<h5>").text("UV Index: " + response.current.uv));
 
   //setting forcast for 5 days 
-  $(".row-cols-md-2").append("<div").attr("class", "mb-4")
-  $(".mb-4").append($("<div>").attr("class", "card"));
-  $(".card").append($("<div>").attr("class", "card-body"));
-  for (var i=1; i<response.forecast.forecastday.length; i++){    
-      $(".card-body").append($("<h5>").attr("class","card-title").text(response.forecast.forecastday[i].date)); 
-      $(".card-body").append($("<p>").attr("class","card-text").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C"));  
-      $(".card-body").append($("<p>").attr("class","card-text").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%"));  
-  }
+  var $heading5
+  var $temp
+  var $humid
+  var $card 
+  var $cardBody
+  for (var i=1; i<response.forecast.forecastday.length; i++){
+    $card = $("<div>").attr("class", "card")
+    $cardBody = $("<div>").attr("class", "card-body")
+    $heading5 = $("<h5>").attr("class","card-title").text(response.forecast.forecastday[i].date)
+    $temp = $("<p>").attr("class","card-text").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C")
+    $humid = $("<p>").attr("class","card-text").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%")
+    $cardBody.append($heading5); 
+    $cardBody.append($temp);  
+    $cardBody.append($humid);    
+    $card.append($cardBody)
+    $cardDiv.append($card) 
+    }
+
+
+  // $(".card-group").append("<div>").attr("class", "card")
+  // $(".mb-4").append($("<div>").attr("class", "card"));
+  // var $card = $(".card")
+  // for (var i=1; i<response.forecast.forecastday.length; i++){ 
+  //  // $card.append($("<div>").attr("class", "card-body"));   
+  //     $card.append($("<h5>").attr("class","card-title").text(response.forecast.forecastday[i].date)); 
+  //     $card.append($("<p>").attr("class","card-text").text("Temperature: " + response.forecast.forecastday[i].day.maxtemp_c + "C"));  
+  //     $card.append($("<p>").attr("class","card-text").text("Humidity: " + response.forecast.forecastday[i].day.avghumidity + "%"));  
+  // }
    
   cityList()
 });
 
 }
-// .attr("class", "card-title")
-// .attr("class", "card-text")
