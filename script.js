@@ -10,18 +10,16 @@ var test = true;
 //making list of already searched cities
 if  ($cityListArray !== [])  {
 for (var j = 0; j<$cityListArray.length; j++){
- // if ($city !== $cityListArray[j]){
    $("#city-list").append($("<h5>").text($cityListArray[j]));
- // }
 }
 }
 
 // making cities list and store in local storage 
 //and displaying on the left side of the page
 function cityList(){
-     $cityListArray.push($city);
+   $cityListArray.push($city);
      window.localStorage.setItem("city", JSON.stringify($cityListArray));
-     $("#city-list").append($("<h5>").text($city));    
+     $("#city-list").append($("<h5>").text($city)); 
 }
 
 //getting city name on click event
@@ -30,7 +28,7 @@ $(".btn").on("click", function(){
   $(".card-group").empty();
     var $cityName = $("#city-name").val();
     $("#city-name").val("");
-    queryUrl = "http://api.weatherapi.com/v1/forecast.json?key=28b5b18116344d0ba6e131451190812&days=6&q="+$cityName;
+    queryUrl = "https://api.weatherapi.com/v1/forecast.json?key=28b5b18116344d0ba6e131451190812&days=6&q="+$cityName;
 results();
 });
 
